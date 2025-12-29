@@ -1,91 +1,131 @@
-import { MapPin, Utensils, Coffee, ShoppingBag, Star } from 'lucide-react';
+import { MapPin, Search, Plus, MessageCircle, Phone, Car, Pill, ShoppingCart, Apple, Coffee, Utensils, PhoneCall, Wrench, Megaphone, Star } from 'lucide-react';
 
 interface HomePageProps {
   onAdminClick: () => void;
 }
 
 export default function HomePage({ onAdminClick }: HomePageProps) {
+  const categories = [
+    { name: 'Táxi', icon: Car },
+    { name: 'Farmácias', icon: Pill },
+    { name: 'Mercados', icon: ShoppingCart },
+    { name: 'Quitandas', icon: Apple },
+    { name: 'Lanchonetes', icon: Coffee },
+    { name: 'Restaurantes', icon: Utensils },
+    { name: 'Emergência', icon: PhoneCall },
+    { name: 'Serviços', icon: Wrench },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
-      <nav className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <MapPin className="text-green-600" size={28} />
-              <h1 className="text-xl font-bold text-gray-800">Fartura Online</h1>
-            </div>
-            <button
-              onClick={onAdminClick}
-              className="px-4 py-2 text-sm font-semibold text-green-600 hover:bg-green-50 rounded-lg transition-colors"
-            >
-              Admin
-            </button>
+    <div className="min-h-screen bg-gray-50">
+      <header className="bg-green-600 text-white py-6">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <MapPin size={32} />
+            <h1 className="text-3xl font-bold">Fartura Online</h1>
           </div>
+          <p className="text-green-50">Telefones, Serviços e Comércio Local</p>
         </div>
-      </nav>
+      </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Descubra os Melhores Lugares de Fartura
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Seu guia completo para restaurantes, cafés e comércio local
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-            <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-              <Utensils className="text-green-600" size={24} />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Restaurantes</h3>
-            <p className="text-gray-600">
-              Explore os melhores restaurantes da região com avaliações e fotos
-            </p>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-            <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-              <Coffee className="text-green-600" size={24} />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Cafés</h3>
-            <p className="text-gray-600">
-              Encontre os cafés mais aconchegantes para um momento especial
-            </p>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-            <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-              <ShoppingBag className="text-green-600" size={24} />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Comércio Local</h3>
-            <p className="text-gray-600">
-              Apoie o comércio local descobrindo lojas únicas e especiais
-            </p>
+      <main className="max-w-3xl mx-auto px-4 pb-8">
+        <div className="relative -mt-4 mb-6">
+          <div className="bg-white rounded-lg shadow-md p-4 flex items-center gap-3">
+            <Search className="text-gray-400" size={20} />
+            <input
+              type="text"
+              placeholder="Buscar estabelecimento, serviço ou categoria..."
+              className="flex-1 outline-none text-gray-700 placeholder-gray-400"
+            />
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <div className="flex items-center gap-2 mb-6">
-            <Star className="text-yellow-500" size={28} />
-            <h3 className="text-2xl font-bold text-gray-900">Destaques da Semana</h3>
+        <div className="bg-red-500 text-white rounded-2xl p-6 mb-8 shadow-lg">
+          <div className="flex items-start gap-4 mb-4">
+            <div className="bg-white rounded-full p-3">
+              <Plus className="text-red-500" size={24} />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold mb-1">Farmácia de Plantão</h2>
+              <p className="text-red-100 text-sm">27/12/2025 a 02/01/2026</p>
+            </div>
           </div>
-          <p className="text-gray-600 text-center py-8">
-            Em breve você encontrará aqui os estabelecimentos mais bem avaliados da região!
-          </p>
+
+          <h3 className="text-xl font-bold mb-2">Farmácia Nossa Senhora de Fátima</h3>
+          <div className="flex items-center gap-2 mb-4">
+            <MapPin size={18} />
+            <p className="text-red-50">Av. João Rocha de Andrade, 557 - Distrito Industrial</p>
+          </div>
+
+          <button className="w-full bg-white text-red-500 font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 hover:bg-red-50 transition-colors">
+            <MessageCircle size={20} />
+            <Phone size={20} />
+            <span>14997237828</span>
+          </button>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Categorias</h2>
+
+        <div className="grid grid-cols-2 gap-4 mb-8">
+          {categories.map((category) => {
+            const Icon = category.icon;
+            return (
+              <button
+                key={category.name}
+                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow flex flex-col items-center gap-3"
+              >
+                <div className="bg-green-100 rounded-full p-4">
+                  <Icon className="text-green-600" size={32} />
+                </div>
+                <span className="text-gray-900 font-semibold">{category.name}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="bg-orange-500 text-white rounded-2xl p-6 shadow-lg">
+          <div className="flex items-center gap-3 mb-4">
+            <Megaphone size={32} />
+            <h2 className="text-2xl font-bold">Anuncie Seu Negócio!</h2>
+          </div>
+
+          <div className="space-y-2 mb-6">
+            <div className="flex items-start gap-2">
+              <Star className="text-orange-200 mt-1 flex-shrink-0" size={18} />
+              <p className="text-orange-50">Destaque seu negócio para milhares de pessoas em Fartura-SP!</p>
+            </div>
+            <div className="flex items-start gap-2">
+              <Star className="text-orange-200 mt-1 flex-shrink-0" size={18} />
+              <p className="text-orange-50">Apareça no topo das buscas e ganhe mais clientes</p>
+            </div>
+            <div className="flex items-start gap-2">
+              <Star className="text-orange-200 mt-1 flex-shrink-0" size={18} />
+              <p className="text-orange-50">Cadastro rápido e gratuito - Anúncios patrocinados disponíveis</p>
+            </div>
+          </div>
+
+          <button className="w-full bg-white text-orange-500 font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 hover:bg-orange-50 transition-colors mb-3">
+            <MessageCircle size={20} />
+            <span>Fale Conosco no WhatsApp</span>
+          </button>
+
+          <p className="text-center text-orange-100">(14) 99689-2074</p>
         </div>
       </main>
 
-      <footer className="bg-gray-800 text-white mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center">
-            <p className="text-gray-300">
-              © 2024 Fartura Online. Todos os direitos reservados.
-            </p>
-          </div>
+      <footer className="bg-gray-900 text-white py-8 mt-12">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <p className="font-semibold mb-1">Fartura Online - Guia completo da cidade</p>
+          <p className="text-gray-400 text-sm">Encontre telefones e serviços rapidamente</p>
         </div>
       </footer>
+
+      <button
+        onClick={onAdminClick}
+        className="fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-700 transition-colors text-sm font-semibold"
+      >
+        Admin
+      </button>
     </div>
   );
 }
