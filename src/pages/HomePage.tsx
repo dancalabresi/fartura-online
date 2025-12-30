@@ -2,18 +2,19 @@ import { MapPin, Search, Plus, MessageCircle, Phone, Car, Pill, ShoppingCart, Ap
 
 interface HomePageProps {
   onAdminClick: () => void;
+  onCategoryClick: (slug: string) => void;
 }
 
-export default function HomePage({ onAdminClick }: HomePageProps) {
+export default function HomePage({ onAdminClick, onCategoryClick }: HomePageProps) {
   const categories = [
-    { name: 'Táxi', icon: Car },
-    { name: 'Farmácias', icon: Pill },
-    { name: 'Mercados', icon: ShoppingCart },
-    { name: 'Quitandas', icon: Apple },
-    { name: 'Lanchonetes', icon: Coffee },
-    { name: 'Restaurantes', icon: Utensils },
-    { name: 'Emergência', icon: PhoneCall },
-    { name: 'Serviços', icon: Wrench },
+    { name: 'Táxi', icon: Car, slug: 'taxi' },
+    { name: 'Farmácias', icon: Pill, slug: 'farmacias' },
+    { name: 'Mercados', icon: ShoppingCart, slug: 'mercados' },
+    { name: 'Quitandas', icon: Apple, slug: 'quitandas' },
+    { name: 'Lanchonetes', icon: Coffee, slug: 'lanchonetes' },
+    { name: 'Restaurantes', icon: Utensils, slug: 'restaurantes' },
+    { name: 'Emergência', icon: PhoneCall, slug: 'emergencia' },
+    { name: 'Serviços', icon: Wrench, slug: 'servicos' },
   ];
 
   return (
@@ -72,6 +73,7 @@ export default function HomePage({ onAdminClick }: HomePageProps) {
             return (
               <button
                 key={category.name}
+                onClick={() => onCategoryClick(category.slug)}
                 className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow flex flex-col items-center gap-3"
               >
                 <div className="bg-green-100 rounded-full p-4">
